@@ -26,6 +26,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: mssql-data
+  namespace: sqlserver
   annotations:
     volume.beta.kubernetes.io/storage-class: standard
 spec:
