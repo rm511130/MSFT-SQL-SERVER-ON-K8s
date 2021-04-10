@@ -1,3 +1,4 @@
+# Target Namespace = sqlserver
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -67,6 +68,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mssql
+              namespace: sqlserver
               key: SA_PASSWORD 
         volumeMounts:
         - name: mssqldb
