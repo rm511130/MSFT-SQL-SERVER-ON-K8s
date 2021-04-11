@@ -21,7 +21,7 @@ kubectl apply -f ./sql-server-complete-deployment.yml
 watch kubectl get pods -n sqlserver
 ```
 
-- Using the following commands, open a shell session to access your newly created `pod`:
+- Using the following commands, open a shell session to access your newly created SQL Server `pod`:
 - _Note: please ignore the error message `groups: cannot find name for group ID 10001` should you see it._
 ```
 kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
