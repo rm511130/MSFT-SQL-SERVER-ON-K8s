@@ -5,7 +5,7 @@
 # SQL SERVER on VMware TKGI running on vSphere
 
 - We're going to use an existing K8s cluster named `small` running on TKGI / vSphere. 
-- We start by invoking the TKGI API to get the Kubectl context, we clone this repo, and we apply [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml):
+- We start by invoking the TKGI API to get the Kubectl context, we then clone this repo, and apply [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml):
 
 ```
 tkgi login -a https://api.pks.pcf4u.com:9021 -u pks_admin -p password -k
