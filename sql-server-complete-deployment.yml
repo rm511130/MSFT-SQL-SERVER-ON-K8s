@@ -4,8 +4,6 @@ kind: Namespace
 metadata:
   name: sqlserver
 ---
-# User sa will have SA_PASSWORD = Password1
-# Base64 encoded = UGFzc3dvcmQx
 apiVersion: v1
 data:
   SA_PASSWORD: UGFzc3dvcmQx
@@ -26,16 +24,16 @@ parameters:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mssql-data
+  name: mssql-data
   namespace: sqlserver
-  annotations:
-    volume.beta.kubernetes.io/storage-class: standard
+  annotations:
+    volume.beta.kubernetes.io/storage-class: standard
 spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 8Gi
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -72,7 +70,6 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mssql
-              namespace: sqlserver
               key: SA_PASSWORD 
         volumeMounts:
         - name: mssqldb
