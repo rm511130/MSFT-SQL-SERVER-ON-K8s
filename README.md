@@ -84,15 +84,15 @@ kubectl delete -f sql-server-complete-deployment.yml
 
 # Quick recap
 
-- The [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml) script created a `namespace` called `sqlserver`, placing in it several K8s objects necessary for SQL Server: `deployment`,`replicaset`, `pod`, `service`, `secret`, and `persistent volume claim`. d by the same script. 
-- The script also create a `storage class` named `standard` that is based on the vSphere environment I'm using to create and test this repo.
+- The [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml) script created a `namespace` called `sqlserver`, placing in it several K8s objects necessary for SQL Server: `deployment`,`replicaset`, `pod`, `service`, `secret`, and `persistent volume claim`. 
+- The script also create a `storage class` named `standard` that is based on the vSphere environment that I'm using to create and test this repo.
 - You accessed the `sqlcmd` CLI that exists inside the SQL Server container to execute various SQL commands.
 - You finished by deleting all the K8s objects involved with your SQL Server container environment.
 
 # Notes on the environment I used:
 
 - I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
-- The `small` K8s cluster had 1 Master and 3 Worker nodes. They were all `4 vCPU 16GB RAM 32GB HDD` virtual machines.
+- The `small` K8s cluster had 1 Master and 3 Worker nodes all configured as `4 vCPU 16GB RAM 32GB HDD` virtual machines.
 
 ```
 kubectl get nodes -o wide
