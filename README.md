@@ -23,7 +23,7 @@ kubectl apply -f ./sql-server-complete-deployment.yml
 watch kubectl get pods -n sqlserver
 ```
 
-- Open a shell session to access your newly created pod and take a look around:
+- Using the following commands, open a shell session to access your newly created pod and take a look around:
 
 ```
 kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
