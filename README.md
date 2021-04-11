@@ -56,6 +56,35 @@ sqlcmd -S $(hostname -I) -U sa -P Password1
 1> SELECT @@VERSION
 2> GO
 ```
+- Let's create a database, a table and insert some data:
+
+```
+1> CREATE DATABASE TestDB
+2> SELECT Name from sys.Databases
+3> GO
+```
+```
+1> USE TestDB
+2> CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+3> INSERT INTO Inventory VALUES (1, 'banana', 150); 
+4> INSERT INTO Inventory VALUES (2, 'orange', 154);
+5> SELECT * FROM Inventory WHERE quantity > 152;
+6> GO
+```
+
+# Quit, Exit and Clean-up
+
+- Please execute the following commands:
+
+```
+1> quit
+mssql@mssqlinst:/$ exit
+kubectl delete -f sql-server-complete-deployment.yml
+```
+- You will be left with the cloned contents of this repo.
+
+
+
 
 
 
