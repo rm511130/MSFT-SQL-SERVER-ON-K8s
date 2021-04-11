@@ -18,10 +18,10 @@ type: Opaque
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
-  name: standard
+  name: standard
 provisioner: kubernetes.io/vsphere-volume
 parameters:
-  diskformat: zeroedthick
+  diskformat: zeroedthick
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
