@@ -1,7 +1,6 @@
 # MSFT SQL SERVER ON K8s
 
-- Microsoft SQL Server 2017 and 2019 can be deployed as containers on Kubernetes.
-- The instructions below show how to get a SQL Server environment up and running in an existing K8s cluster.
+- The following instruction can be used to run a Microsoft SQL Server 2017 or 2019 on and existing Kubernetes cluster.
 - I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
 
 # SQL SERVER 2019 on VMware TKGI running on vSphere
