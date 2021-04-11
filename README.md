@@ -1,9 +1,8 @@
 # MSFT SQL SERVER ON K8s
 
-- The following instruction can be used to run a Microsoft SQL Server 2017 or 2019 on and existing Kubernetes cluster.
-- I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
+- The following instruction can be used to run a Microsoft SQL Server on an existing Kubernetes cluster.
 
-# SQL SERVER 2019 on VMware TKGI running on vSphere
+# SQL SERVER on VMware TKGI running on vSphere
 
 - We're going to use an existing K8s cluster named `small` running on TKGI / vSphere. 
 - We start by invoking the TKGI API to get the Kubectl context, we clone this repo, and we apply [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml):
@@ -89,6 +88,19 @@ kubectl delete -f sql-server-complete-deployment.yml
 - The script also create a `storage class` named `standard` that is based on the vSphere environment I'm using to create and test this repo.
 - You accessed the `sqlcmd` CLI that exists inside the SQL Server container to execute various SQL commands.
 - You finished by deleting all the K8s objects involved with your SQL Server container environment.
+
+# Notes on the environment I used:
+
+- I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
+- The `small` K8s cluster had 1 Master and 3 Worker nodes. They were all `4 vCPU 16GB RAM 32GB HDD` virtual machines.
+
+```
+kubectl get nodes -o wide
+NAME                                   STATUS   ROLES    AGE   VERSION            INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
+61e328a4-d709-4669-a804-6856c0ee8a54   Ready    <none>   9h    v1.19.6+vmware.1   10.0.7.14     10.0.7.14     Ubuntu 16.04.7 LTS   4.15.0-133-generic   docker://19.3.14
+6e2ac16b-3261-45ae-9854-2847c0504f42   Ready    <none>   8h    v1.19.6+vmware.1   10.0.7.13     10.0.7.13     Ubuntu 16.04.7 LTS   4.15.0-133-generic   docker://19.3.14
+d4586d00-435a-4b79-aa23-c48d45e0034e   Ready    <none>   17h   v1.19.6+vmware.1   10.0.7.11     10.0.7.11     Ubuntu 16.04.7 LTS   4.15.0-133-generic   docker://19.3.14
+```
 
 
 
