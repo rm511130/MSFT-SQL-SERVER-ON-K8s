@@ -30,7 +30,7 @@ watch kubectl get pods -n sqlserver
 - Open a shell session to enter your newly created pod:
 
 ```
-kubectl exec $(k get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -it -- /bin/bash
+kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
 cat /etc/*release
 whoami
 id
