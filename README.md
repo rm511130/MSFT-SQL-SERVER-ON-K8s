@@ -45,7 +45,7 @@ sqlcmd -S $(hostname -I) -U sa -P Password1
 - Once you see the `1>` prompt, you can proceed with the following examples:
 
 ```
-1> SELECT 1
+1> SELECT GETDATE()
 2> GO
 ```
 - Checking the SQL Server version:
