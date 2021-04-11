@@ -6,18 +6,14 @@
 
 # SQL SERVER 2019 on VMware TKGI running on vSphere
 
-- We're going to use a K8s cluster named `small` running on TKGI / vSphere. The TKGI API is invoked to get the Kubectl context:
+- We're going to use a K8s cluster named `small` running on TKGI / vSphere. 
+- To do so, the TKGI API is invoked to get the Kubectl context, we `git clone` this repo, and we `kubectl apply` the contents of the `sql-server-complete-deployment.yml`:
 
 ```
 tkgi login -a https://api.pks.pcf4u.com:9021 -u pks_admin -p password -k
 tkgi get-credentials small
 git clone https://github.com/rm511130/MSFT-SQL-SERVER-ON-K8s
 cd MSFT-SQL-SERVER-ON-K8s
-```
-
-- Next we execute the `sql-server-complete.yml` script and then watch for the `mssql pod` to come be ready:
-
-```
 kubectl apply -f ./sql-server-complete-deployment.yml
 ```
 
@@ -27,7 +23,7 @@ kubectl apply -f ./sql-server-complete-deployment.yml
 watch kubectl get pods -n sqlserver
 ```
 
-- Open a shell session to enter your newly created pod:
+- Open a shell session to access your newly created pod and take a look around:
 
 ```
 kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
@@ -41,7 +37,10 @@ hostname -I
 - Now lets execute a SQL command or two:
 
 ```
-
+alias sqlcmd="/opt/mssql-tools/bin/sqlcmd"
+sqlcmd -S $(hostname -I) -U sa -P Password1!
+1> SELECT 1
+2> GO
 ```
 
 
