@@ -29,10 +29,12 @@ watch kubectl get pods -n sqlserver
 kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
 cat /etc/*release
 whoami
-id
 hostname
 hostname -I
+id
 ```
+
+- Ignore the error message `groups: cannot find name for group ID 10001` should you see it.
 
 - Now lets execute a SQL command or two:
 
