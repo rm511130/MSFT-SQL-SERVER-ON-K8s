@@ -36,14 +36,25 @@ id
 
 - Ignore the error message `groups: cannot find name for group ID 10001` should you see it.
 
-- Now lets execute a SQL command or two:
+- Now let's use `sqlcmd` to execute SQL commands:
 
 ```
 alias sqlcmd="/opt/mssql-tools/bin/sqlcmd"
-sqlcmd -S $(hostname -I) -U sa -P Password1!
+sqlcmd -S $(hostname -I) -U sa -P Password1
+```
+
+- Once you see the `1>` prompt, you can proceed with the following examples:
+
+```
 1> SELECT 1
 2> GO
 ```
+- Checking the SQL Server version:
+```
+1> SELECT @@VERSION
+2> GO
+```
+
 
 
 
