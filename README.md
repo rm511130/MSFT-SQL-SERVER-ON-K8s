@@ -32,7 +32,7 @@ kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -
 - Wait for the new `mssql@mssqlinst:/$` Linux prompt and execute the following commands to take a look inside the `pod` running SQL Server:
 
 ```
-cat /etc/*release
+cat /etc/*release | head -n 4
 whoami
 hostname
 hostname -I
