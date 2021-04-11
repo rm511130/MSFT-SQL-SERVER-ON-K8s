@@ -18,8 +18,30 @@ cd MSFT-SQL-SERVER-ON-K8s
 - Next we execute the `sql-server-complete.yml` script and then watch for the `mssql pod` to come be ready:
 
 ```
-kubectl apply -f ./sql-server-complete.yml
+kubectl apply -f ./sql-server-complete-deployment.yml
+```
+
+- Wait until the `mssql` pod is running:
+
+```
 watch kubectl get pods -n sqlserver
+```
+
+- Open a shell session to enter your newly created pod:
+
+```
+kubectl exec $(k get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -it -- /bin/bash
+cat /etc/*release
+whoami
+id
+hostname
+hostname -I
+```
+
+- Now lets execute a SQL command or two:
+
+```
+
 ```
 
 
