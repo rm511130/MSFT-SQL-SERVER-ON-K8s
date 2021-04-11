@@ -7,7 +7,7 @@
 # SQL SERVER 2019 on VMware TKGI running on vSphere
 
 - We're going to use a K8s cluster named `small` running on TKGI / vSphere. 
-- To do so, the TKGI API is invoked to get the Kubectl context, we `git clone` this repo, and we `kubectl apply` the contents of the `sql-server-complete-deployment.yml`:
+- We start by invoking the TKGI API to get the Kubectl context, we `git clone` this repo, and we `kubectl apply` the contents of the `sql-server-complete-deployment.yml`:
 
 ```
 tkgi login -a https://api.pks.pcf4u.com:9021 -u pks_admin -p password -k
