@@ -2,6 +2,7 @@
 
 - Microsoft SQL Server 2017 and 2019 can be deployed as containers on Kubernetes.
 - The instructions below show how to get a SQL Server environment up and running in an existing K8s cluster.
+- The [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml) script will place the `deployment`,`replicaset`, `pod`, `service`, `secret`, and `persistent volume claim` in a `sqlserver` namespace. It will also create a `storage class` named `standard` that is based on the vSphere environment I use.
 - I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
 
 # SQL SERVER 2019 on VMware TKGI running on vSphere
