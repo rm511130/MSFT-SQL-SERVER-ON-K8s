@@ -48,28 +48,27 @@ sqlcmd -S $(hostname -I) -U sa -P Password1
 1> SELECT 1
 2> GO
 ```
-- _Note: I will omit the `1>` prompts from the examples below._
 - Checking the SQL Server version:
 ```
-SELECT @@VERSION
-GO
+1> SELECT @@VERSION
+2> GO
 ```
 - Let's create a database:
 
 ```
-CREATE DATABASE TestDB
-SELECT Name from sys.Databases
-GO
+1> CREATE DATABASE TestDB
+2> SELECT Name from sys.Databases
+3> GO
 ```
 - Let's create a table and insert some data:
 
 ```
-USE TestDB
-CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
-INSERT INTO Inventory VALUES (1, 'banana', 150); 
-INSERT INTO Inventory VALUES (2, 'orange', 154);
-SELECT * FROM Inventory WHERE quantity > 152;
-GO
+1> USE TestDB
+2> CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+3> INSERT INTO Inventory VALUES (1, 'banana', 150); 
+4> INSERT INTO Inventory VALUES (2, 'orange', 154);
+5> SELECT * FROM Inventory WHERE quantity > 152;
+6> GO
 ```
 
 # Quit, Exit and Clean-up
