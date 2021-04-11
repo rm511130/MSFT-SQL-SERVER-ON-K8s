@@ -25,12 +25,11 @@ watch kubectl get pods -n sqlserver
 ```
 
 - Using the following commands, open a shell session to access your newly created `pod`:
-
+- _Note: please ignore the error message `groups: cannot find name for group ID 10001` should you see it._
 ```
 kubectl exec $(kubectl get pods -n sqlserver | tail -n 1 | awk '{ print $1 }') -n sqlserver -it -- /bin/bash
 ```
 - Wait for the new Linux prompt and execute the following commands to take a look inside the `pod` running SQL Server:
-- Please ignore the error message `groups: cannot find name for group ID 10001` should you see it.
 
 ```
 cat /etc/*release
