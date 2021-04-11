@@ -2,13 +2,12 @@
 
 - Microsoft SQL Server 2017 and 2019 can be deployed as containers on Kubernetes.
 - The instructions below show how to get a SQL Server environment up and running in an existing K8s cluster.
-- The [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml) script will place the `deployment`,`replicaset`, `pod`, `service`, `secret`, and `persistent volume claim` in a `namespace` named `sqlserver` which is also created by the same script. The script will also create a `storage class` named `standard` that is based on the vSphere environment I'm using to create and test this repo.
 - I'm using a MacBook with kubectl, tkgi and other tools that a typical K8s user is expected to have & use.
 
 # SQL SERVER 2019 on VMware TKGI running on vSphere
 
-- We're going to use a K8s cluster named `small` running on TKGI / vSphere. 
-- We start by invoking the TKGI API to get the Kubectl context, we `git clone` this repo, and we `kubectl apply` the contents of the [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml):
+- We're going to use an existing K8s cluster named `small` running on TKGI / vSphere. 
+- We start by invoking the TKGI API to get the Kubectl context, we clone this repo, and we apply [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml):
 
 ```
 tkgi login -a https://api.pks.pcf4u.com:9021 -u pks_admin -p password -k
@@ -56,13 +55,15 @@ sqlcmd -S $(hostname -I) -U sa -P Password1
 1> SELECT @@VERSION
 2> GO
 ```
-- Let's create a database, a table and insert some data:
+- Let's create a database:
 
 ```
 1> CREATE DATABASE TestDB
 2> SELECT Name from sys.Databases
 3> GO
 ```
+- Let's create a table and insert some data:
+
 ```
 1> USE TestDB
 2> CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
@@ -83,7 +84,12 @@ kubectl delete -f sql-server-complete-deployment.yml
 ```
 - You will be left with the cloned contents of this repo.
 
+# Quick recap
 
+- The [`sql-server-complete-deployment.yml`](./sql-server-complete-deployment.yml) script created a `namespace` called `sqlserver`, placing in it several K8s objects necessary for SQL Server: `deployment`,`replicaset`, `pod`, `service`, `secret`, and `persistent volume claim`. d by the same script. 
+- The script also create a `storage class` named `standard` that is based on the vSphere environment I'm using to create and test this repo.
+- You accessed the `sqlcmd` CLI that exists inside the SQL Server container to execute various SQL commands.
+- You finished by deleting all the K8s objects involved with your SQL Server container environment.
 
 
 
